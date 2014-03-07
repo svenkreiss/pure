@@ -127,7 +127,7 @@ pre {
 }
 
 .brand-main a {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     text-decoration: none;
     margin-left: 15px;
     font-size: 25px;
@@ -285,6 +285,15 @@ pre {
 
 .highlight pre {
     font-size: 75%;
+}
+
+h2, h3 {
+    padding-top: 1em;
+}
+.float-right {
+    float:right;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 /* LAYOUT CSS */
