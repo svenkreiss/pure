@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}{{ article.title|striptags }} // {{ super() }}{% endblock title %}
+
+{% block title %}{{ article.title|striptags }} - {{ super() }}{% endblock %}
+{% block twitter_title %}{{ article.title|striptags }}{% endblock %}
+{% block og_title %}{{ article.title|striptags }}{% endblock %}
+
+{% block meta_description %}{{ article.summary|striptags }}{% endblock %}
+{% block twitter_description %}{{ article.summary|striptags }}{% endblock %}
+{% block og_description %}{{ article.summary|striptags }}{% endblock %}
+
 
 {% block head_css %}
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css">
@@ -24,7 +32,7 @@
                 </a>
                 <h2 class="article-info">{{ article.author }}</h2>
                 <small class="about-author">{{ article.about_author }}</small>
-                <h5>{% if article.status %}{{ article.status }}{% else %}published{% endif %}</h5>
+                <h5>{% if article.status %}{{ article.status|capitalize }}{% else %}published{% endif %}</h5>
                 <p>{{ article.locale_date }}</p>
                 <a href="/">&larr;Home</a>
             </hgroup>
@@ -40,7 +48,13 @@
                             {% for tag in article.tags %}
                                 <a class="post-category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
                             {% endfor %}
-                            in <a class="post-category" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+                            in <a class="post-category" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>&nbsp;&nbsp;&nbsp;
+
+                            <span style="display:inline-block;">
+                            // share on <a href="https://twitter.com/share?text={{ article.title|urlencode }}&via=svenkreiss" target="_blank">
+                                <i class="fa fa-twitter fa-lg"></i> Twitter
+                            </a>
+                            </span
                         </p>
                 </header>
             </section>
