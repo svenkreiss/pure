@@ -7,13 +7,20 @@
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@svenkreiss">
+    <meta name="twitter:creator" content="@svenkreiss">
     <meta name="twitter:title" content="{% block twitter_title %}{{ SITENAME }}{% endblock %}">
     <meta name="twitter:description" content="{% block twitter_description %}{{ META_DESCRIPTION }}{% endblock %}">
+    {% if article is defined and article.featured_image %}
+    <meta name="twitter:image:src" content="{{ article.featured_image }}">
+    {% endif %}
     <meta name="twitter:domain" content="svenkreiss.com">
 
     <meta property="og:title" content="{% block og_title %}{{ SITENAME }}{% endblock %}" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="{% block og_description %}{{ META_DESCRIPTION }}{% endblock %}" />
+    {% if article is defined and article.featured_image %}
+    <meta property="og:image" content="{{ article.featured_image }}" />
+    {% endif %}
     <meta property="og:site_name" content="svenkreiss.com" />
 
     {% if FEED_ALL_ATOM %}
