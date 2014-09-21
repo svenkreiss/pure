@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Tags - {{ super() }}{% endblock title %}
+
+{% block content %}
+<div class="pure-g-r" id="layout">
+    {% include 'sidebar.html' %}
+    <div class="pure-u-1">
+        <div class="content">
+            <!-- A wrapper for all the tags -->
+            <div class="posts">
+                <h1 class="content-subhead">
+                    Tags
+                </h1>
+
+    <ul>
+    {% for tag, articles in tags|sort %}
+        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
+    {% endfor %}
+    </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

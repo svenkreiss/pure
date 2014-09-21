@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Authors - {{ super() }}{% endblock title %}
+
+{% block content %}
+<div class="pure-g-r" id="layout">
+    {% include 'sidebar.html' %}
+    <div class="pure-u-1">
+        <div class="content">
+            <!-- A wrapper for all the authors -->
+            <div class="posts">
+                <h1 class="content-subhead">
+                    Authors
+                </h1>
+
+    <ul>
+    {%- for author, articles in authors|sort %}
+        <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
+    {% endfor %}
+    </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
