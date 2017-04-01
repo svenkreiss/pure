@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block meta_description %}{{ META_DESCRIPTION }}{% endblock meta_description %}">
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@svenkreiss">
-    <meta name="twitter:creator" content="@svenkreiss">
-    <meta name="twitter:title" content="{% block twitter_title %}{{ SITENAME }}{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}{{ META_DESCRIPTION }}{% endblock %}">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@svenkreiss" />
+    <meta name="twitter:creator" content="@svenkreiss" />
+    <meta name="twitter:title" content="{% block twitter_title %}{{ SITENAME }}{% endblock %}" />
+    <meta name="twitter:description" content="{% block twitter_description %}{{ META_DESCRIPTION }}{% endblock %}" />
     {% if article is defined and article.featured_image %}
-    <meta name="twitter:image:src" content="{{ article.featured_image }}">
+    <meta name="twitter:image:src" content="{{SITEURL}}{{article.featured_image}}" />
+    {% else %}
+    <meta name="twitter:image:src" content="{{SITEURL}}{{AUTHOR_IMAGE}}" />
     {% endif %}
-    <meta name="twitter:domain" content="svenkreiss.com">
+    <meta name="twitter:domain" content="svenkreiss.com" />
 
     <meta property="og:title" content="{% block og_title %}{{ SITENAME }}{% endblock %}" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="{% block og_description %}{{ META_DESCRIPTION }}{% endblock %}" />
     {% if article is defined and article.featured_image %}
-    <meta property="og:image" content="{{ article.featured_image }}" />
+    <meta property="og:image" content="{{SITEURL}}{{article.featured_image}}" />
+    {% else %}
+    <meta property="og:image" content="{{SITEURL}}{{AUTHOR_IMAGE}}" />
     {% endif %}
     <meta property="og:site_name" content="svenkreiss.com" />
 
