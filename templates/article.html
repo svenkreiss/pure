@@ -51,6 +51,14 @@
             </section>
             {{ article.content }}
             <div class="hr"></div>
+            {% if article.related_posts %}
+            <h2>Related Posts</h2>
+            <ul>
+            {% for related_post in article.related_posts %}
+                <li><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }}</a></li>
+            {% endfor %}
+            </ul>
+            {% endif %}
             <a href="#" class="go-top">Go Top</a>
             {% if DISQUS_SITENAME %}
                 {% include 'disqus.html' %}
