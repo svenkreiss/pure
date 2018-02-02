@@ -32,7 +32,9 @@ a:hover,
 a:focus {
     text-decoration: underline;
 }
-
+a.cite-backref {
+    display: none;
+}
 
 .comments {
     padding: 50px 0 0;
@@ -48,7 +50,7 @@ a:focus {
 pre {
     padding: 15px 15px 15px 15px;
     font-size: 90%;
-    box-shadow: 2px 2px 2px #888;
+    /* box-shadow: 2px 2px 2px #888; */
 }
 
 .sidebar {

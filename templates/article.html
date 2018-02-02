@@ -23,7 +23,7 @@
                     {% endif %}
                 </a>
                 <h2 class="article-info">{{ article.author }}</h2>
-                <small class="about-author">{{ article.about_author }}</small>
+                {% if article.about_author %}<small class="about-author">{{ article.about_author }}</small>{% endif %}
                 <h5>{% if article.status %}{{ article.status|capitalize }}{% else %}published{% endif %}</h5>
                 <p>{{ article.locale_date }}</p>
                 <a href="/">&larr;Home</a>
