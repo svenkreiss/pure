@@ -58,6 +58,15 @@
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pure.css">
     {% block head_css %}{% endblock %}
 
+    <!-- for pelican_dynamic plugin -->
+    {% if article %}
+        {% if article.styles %}
+            {% for style in article.styles %}
+    {{ style }}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     {% block head_js %}{% endblock %}
 </head>
@@ -93,6 +102,16 @@
             event.preventDefault();
         });
     </script>
+
+    <!-- for pelican_dynamic plugin -->
+    {% if article %}
+        {% if article.scripts %}
+            {% for script in article.scripts %}
+    {{ script }}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
     {% include 'analytics.html' %}
 </body>
 </html>
