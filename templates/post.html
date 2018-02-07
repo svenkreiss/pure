@@ -7,6 +7,9 @@
             {% endif %}
         </a>
         -->
+        {% if article.featured_image %}
+            <img class="featured" src="{{ article.featured_image }}" alt="featured image for {{ article.title }}" />
+        {% endif %}
 
         <h3><a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
         <p class="post-meta">
