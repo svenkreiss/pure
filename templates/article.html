@@ -23,9 +23,17 @@
                     {% endif %}
                 </a>
                 <h2 class="article-info">{{ article.author }}</h2>
-                {% if article.about_author %}<small class="about-author">{{ article.about_author }}</small>{% endif %}
-                <h5>{% if article.status %}{{ article.status|capitalize }}{% else %}published{% endif %}</h5>
-                <p>{{ article.locale_date }}</p>
+
+                {% if article.about_author %}
+                    <small class="about-author">{{ article.about_author }}</small>
+                {% endif %}
+
+                {% if article.status != 'published' %}
+                    <h5>{{ article.status|capitalize }}</h5>
+                {% endif %}
+
+                <p class="article-date">{{ article.locale_date }}</p>
+
                 <a class="header-article-home" href="/">&larr;Home</a>
         </header>
     </div>
