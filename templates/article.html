@@ -42,22 +42,24 @@
             <section class="post">
                 <header class="post-header">
                     <h1>{{ article.title }}</h1>
-                        <p class="post-meta">
-                            // under
-                            {% for tag in article.tags %}
-                                <a class="post-category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-                            {% endfor %}
-                            in <a class="post-category" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>&nbsp;&nbsp;&nbsp;
-
-                            <span style="display:inline-block;">
-                            // share on <a href="https://twitter.com/share?text=%22{{ article.title|urlencode }}%22&amp;via=svenkreiss" target="_blank">
-                                <i class="fa fa-twitter fa-lg"></i> Twitter
-                            </a>
-                            </span>
-                        </p>
                 </header>
             </section>
+
             {{ article.content }}
+
+            <p class="post-footer">
+                // under
+                {% for tag in article.tags %}
+                    <a class="post-category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                {% endfor %}
+                in <a class="post-category" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>&nbsp;&nbsp;&nbsp;
+
+                <span style="display:inline-block;">
+                // share on <a href="https://twitter.com/share?text=%22{{ article.title|urlencode }}%22&amp;via=svenkreiss" target="_blank">
+                    <i class="fa fa-twitter fa-lg"></i> Twitter
+                </a>
+                </span>
+            </p>
             <div class="hr"></div>
 
             {% if article.related_posts %}
