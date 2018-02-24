@@ -55,7 +55,7 @@
                 in <a class="post-category" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>&nbsp;&nbsp;&nbsp;
 
                 <span style="display:inline-block;">
-                // share on <a href="https://twitter.com/share?text=%22{{ article.title|urlencode }}%22&amp;via=svenkreiss" target="_blank">
+                // share on <a href="https://twitter.com/share?text=%22{{ (article.title+': '+article.summary)|striptags|truncate(200)|urlencode }}%22&amp;hashtags={{ article.tags|join(',')|replace(' ','')|urlencode }}" target="_blank">
                     <i class="fa fa-twitter fa-lg"></i> Twitter
                 </a>
                 </span>
