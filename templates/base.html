@@ -5,27 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="{% block meta_description %}{{ META_DESCRIPTION }}{% endblock meta_description %}" />
 
+    {% if article is defined %}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@svenkreiss" />
     <meta name="twitter:creator" content="@svenkreiss" />
     <meta name="twitter:title" content="{% block twitter_title %}{{ SITENAME }}{% endblock %}" />
     <meta name="twitter:description" content="{% block twitter_description %}{{ META_DESCRIPTION }}{% endblock %}" />
-    {% if article is defined and article.featured_image %}
-    <meta name="twitter:image:src" content="{{SITEURL}}{{article.featured_image}}" />
-    {% else %}
-    <meta name="twitter:image:src" content="{{SITEURL}}{{AUTHOR_IMAGE}}" />
-    {% endif %}
+    <meta name="twitter:image:src" content="{% if article.featured_image %}{{SITEURL}}{{article.featured_image}}{% else %}{{SITEURL}}{{ COVER_IMG_URL }}{% endif %}" />
     <meta name="twitter:domain" content="svenkreiss.com" />
 
     <meta property="og:title" content="{% block og_title %}{{ SITENAME }}{% endblock %}" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="{% block og_description %}{{ META_DESCRIPTION }}{% endblock %}" />
-    {% if article is defined and article.featured_image %}
-    <meta property="og:image" content="{{SITEURL}}{{article.featured_image}}" />
-    {% else %}
-    <meta property="og:image" content="{{SITEURL}}{{AUTHOR_IMAGE}}" />
-    {% endif %}
+    <meta property="og:image" content="{% if article.featured_image %}{{SITEURL}}{{article.featured_image}}{% else %}{{SITEURL}}{{ COVER_IMG_URL }}{% endif %}" />
     <meta property="og:site_name" content="svenkreiss.com" />
+    <meta property="og:url" content="{{SITEURL}}/{{article.url}}" />
+    {% endif %}
 
     {% if FEED_ALL_ATOM %}
         <link rel="alternate"  href="{{FEED_DOMAIN}}/{{FEED_ALL_ATOM}}" type="application/atom+xml" title="{{SITENAME}} Full Atom Feed"/>
