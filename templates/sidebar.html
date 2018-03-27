@@ -1,5 +1,8 @@
 <div class="sidebar pure-u">
-    <div class="cover-img" style="background-image: url('{{ COVER_IMG_URL }}')">
+    <div class="cover-img" style="
+    {%- if COVER_IMG_URL %}background-image: url('{{ COVER_IMG_URL }}');{% endif -%}
+    {%- if COVER_COLOR %}background-color: {{ COVER_COLOR }};{% endif -%}
+    ">
         <div class="cover-body">
             <header class="header">
                     <h1 class="brand-main"><a href="/">{{ SITENAME }}</a></h1>

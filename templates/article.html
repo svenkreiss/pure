@@ -34,7 +34,11 @@
 
                 <p class="article-date">{{ article.locale_date }}</p>
 
-                <a class="header-article-home" href="/blog/">&larr;Articles</a>
+                {% if ARTICLE_HOME_LINK == 'CATEGORY' %}
+                <a class="header-article-home" href="{{ SITEURL }}/{{ article.category.url }}">&larr;{{ article.category }}</a>
+                {% else %}
+                <a class="header-article-home" href="{{ ARTICLE_HOME_LINK }}">&larr;Articles</a>
+                {% endif %}
         </header>
     </div>
     <div class="pure-u">
