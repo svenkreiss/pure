@@ -17,11 +17,11 @@
 <div class="pure-g-r" id="layout">
     <div class="sidebar sidebar-article pure-u">
         <header class="header-article">
-                <a href="{{ SITEURL }}/{{ article.author.url }}" title="See posts by {{ article.author }}">
-                    {% if article.author_gravatar %}
+                {% if article.author_gravatar %}
+                    <a href="{{ SITEURL }}/{{ article.author.url }}" title="See posts by {{ article.author }}">
                         <img class="avatar" alt="{{ article.author }}" src="{{ article.author_gravatar }}?s=140">
-                    {% endif %}
-                </a>
+                    </a>
+                {% endif %}
                 <h2 class="article-info">{{ article.author }}</h2>
 
                 {% if article.about_author %}
@@ -36,8 +36,10 @@
 
                 {% if ARTICLE_HOME_LINK == 'CATEGORY' %}
                 <a class="header-article-home" href="{{ SITEURL }}/{{ article.category.url }}">&larr;{{ article.category }}</a>
-                {% else %}
+                {% elif ARTICLE_HOME_LINK %}
                 <a class="header-article-home" href="{{ ARTICLE_HOME_LINK }}">&larr;Articles</a>
+                {% else %}
+                <a class="header-article-home" href="/">&larr;Home</a>
                 {% endif %}
         </header>
     </div>
@@ -52,7 +54,8 @@
             {{ article.content }}
 
             <p class="post-footer">
-                // filed under
+                // filed
+                {% if article.tags %}under{% endif %}
                 {% for tag in article.tags %}
                     <a class="post-category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
                 {% endfor %}
