@@ -1,7 +1,10 @@
 <footer class="footer">
-    {% if not COPYRIGHT_FOOTER %}
+{% if page is defined and page.hide_copyright == 'true' %}
+{% else %}
+  {% if not COPYRIGHT_FOOTER %}
     <p>&copy; {{ SITENAME }} {{ COPYRIGHT_YEARS }}.</p>
-    {% else %}
+  {% else %}
     {{ COPYRIGHT_FOOTER }}
-    {% endif %}
+  {% endif %}
+{% endif %}
 </footer>
